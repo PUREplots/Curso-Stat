@@ -1,0 +1,87 @@
+\documentclass{article}
+\usepackage[a4paper, total={5.8in, 8in}]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{mdframed}
+
+\selectlanguage{spanish}
+\graphicspath{ {figs/} }
+
+\newmdenv[leftline=false,rightline=false]{topbot}
+\newtheorem{pregunta}{Pregunta}
+
+\font\domino=domino
+\def\die#1{{\domino#1}}
+
+\DeclareFontFamily{U}{skulls}{}
+\DeclareFontShape{U}{skulls}{m}{n}{ <-> skull }{}
+\newcommand{\skull}{\text{\usefont{U}{skulls}{m}{n}\symbol{'101}}}
+
+\begin{document}
+\begin{center}
+  \Large Sueldo y Altura. \\
+  % \die1 \die6 \die6 $\skull$ \die6 \die6 \die1 \\
+  \null
+  Estadística.
+\end{center}
+\vspace{1cm}
+
+\textbf{Importante:\\
+ Escriban el código R para TODAS las preguntas de programación. \\ Cada grupo debe redactar sus resultados.}
+
+\null\hfill
+
+ El objetivo del ejercicio es analizar la relación entre el sueldo anual de una persona y su altura.
+\par
+Para el ejercicio necesitan leer la tabla sueldo.csv. La tabla tiene cuatro columnas:
+\begin{itemize}
+  \item Altura en cm.
+  \item Peso en libras.
+  \item Sueldo en dólares por año.
+  \item Sexo: 1 para hombre, 2 para mujer.
+\end{itemize}
+ \begin{topbot}
+   \vspace{0.7em}
+   Paso 0 \quad Leer y analizar los datos
+   \vspace{0.7em}
+ \end{topbot}
+
+\begin{pregunta} (4 puntos)
+Lean los datos en R. Hagan un plot de la altura contra el sueldo. Qué pueden concluir al leer el plot?
+\par
+\textbf{Una recomendación:} dividan la columna sueldo para $1000$ para que los datos sean mas fáciles de leer.
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Las personas altas tienen sueldos mas altos? Los datos parecen estar ordenados en columnas. Qué interpretación tiene un modelo de regresión?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 1 \quad Construir el modelo de regresión para explorar la relación.
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Cuál es un buen priemer modelo de regresión para estudiar la relación entre la altura y el sueldo? Por qué?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Calculen los coeficientes, $a$ y $b$, del modelo usando lm de R. Interpreten los coeficientes. Qué unidades tienen? Qué significan?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+ Pueden construir un intervalo de confianza para los coeficientes? Qué representa el intervalo? Para qué sirve el intervalo?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+ Creen que el sueldo depende solo de la altura? No hay otra variable importante que afecta el sueldo? Qué piensan del sexo?
+ \par
+ \textbf{Una idea:} Creen una tabla con todas las mujeres y otra con todos los hombres. Luego hagan un modelo de regresión para las mujeres y otro para los hombres. Comparen los coeficientes. Qué peuden concluir?
+\end{pregunta}
+
+\end{document}

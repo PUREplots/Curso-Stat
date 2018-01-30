@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage[a4paper, total={5.2in, 8in}]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{mdframed}
+
+\selectlanguage{spanish}
+\graphicspath{ {figs/} }
+
+\newmdenv[leftline=false,rightline=false]{topbot}
+\newtheorem{pregunta}{Pregunta}
+
+\font\domino=domino
+\def\die#1{{\domino#1}}
+
+\DeclareFontFamily{U}{skulls}{}
+\DeclareFontShape{U}{skulls}{m}{n}{ <-> skull }{}
+\newcommand{\skull}{\text{\usefont{U}{skulls}{m}{n}\symbol{'101}}}
+
+\begin{document}
+\begin{center}
+  \Large Pueden Cargar un Dado Pero no Pueden Alterar una Moneda. \\
+  % \die1 \die6 \die6 $\skull$ \die6 \die6 \die1 \\
+  \null
+  Estadística.
+\end{center}
+\vspace{1cm}
+
+\textbf{Importante:\\
+ Escriban el código R para TODAS las preguntas de programación. \\ Cada grupo debe redactar sus resultados.}
+
+\null\hfill
+
+ El objetivo de todo el ejercicio es tratar de entender cómo y por qué lanzar una moneda es aleatorio.
+\par
+Van a diseñar y analizar una serie de experimentos para tratar de entender que es una moneda y un dado justos y por qué lanzar una moneda o un dado se consideran experimentos aleatorios.
+ \begin{topbot}
+   \vspace{0.7em}
+   Paso 0 \quad Monedas y dados justos
+   \vspace{0.7em}
+ \end{topbot}
+
+\begin{pregunta} (4 puntos)
+Qué hace que una moneda o un dado sean justos?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 1 \quad Definir lanzar una moneda y lanzar un dado
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Van a lazar dados y monedas. Para lanzar una moneda:
+\begin{enumerate}
+  \item La moneda comienza cara abajo.
+  \item Lanzar la moneda alto y que de muchas vueltas.
+  \item Eje de rotación tiene que ser paralelo al suelo. Sin tambaleos.
+  \item Coger la moneda en la palma de la mano mientras está en el aire.
+\end{enumerate}
+Para lanzar el dado:
+\begin{enumerate}
+  \item Encuentren una superficie plana.
+  \item Dibujen un círculo de mas o menos $60$ cm, en el que van a lanzar el dado.
+  \item Batan el dado dentro de un vaso y lancen el dado en el círculo. El lanzamiento tiene que terminar dentro del círculo.
+\end{enumerate}
+
+Lancen la moneda $100$ veces y el dado $120$ veces usando sus protocolos. Registren los resultados.
+
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 2 \quad Modifiquen la moneda y el dado
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Modifiquen la moneda y el dado como quieran para que dejen de ser justos hasta que estén satisfechos. Por jemplo, pueden lijar las esquinas del dado o pueden poner plastilina en una de las caras de la moneda.
+\par
+Usen el protocolo para lanzar el dado modificado $120$ veces como antes. Lancen la moneda modificada $100$ veces usando el protocolo.
+\par
+Registren los resultados del dado modificado y la moneda modificada.
+
+Hagan otro experimento: Hagan girar la moneda modificada dentro del círculo y registren si terminó cara arriba o no. Usen un protocolo parecido al del dado: La moneda tiene que terminar dentro del círculo. Repitan el experimento $100$ veces y registren los resultados.
+
+La idea del tercer experimento es la siguiente: Hay dos formas de lanzar una moneda:
+
+\begin{enumerate}
+  \item Lanzar la moneda y cogerla en el aire - o dejarla caer en lodo.
+  \item Lanzar la moneda, dejarla caer al suelo. Cuando toca el suelo, rebota da algunos giros y para.
+\end{enumerate}
+
+El tercer experimento es un modelo de la moneda luego de que toca el suelo y deja de rebotar.
+
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 3 \quad Primer análisis de los resultados
+  \vspace{0.7em}
+\end{topbot}
+
+Cómo saben si los resultados son justos? Cuál es la probabilidad de observar sus resultados si asumen que el dado es justo?
+
+\begin{pregunta} (4 puntos)
+Cuál es la probabilidad de observar sus resultados si asumen que el dado y la moneda son justas?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Qué pasa si repito el experimento? Los resultados van a ser iguales? Parecidos?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 4 \quad Intervalos de Confianza y tests estadísticos
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Hagan un intervalo de confianza percentíl-bootstrap para verificar si la distribución de la moneda alterada es diferente a una moneda justa. Pueden usar el promedio de los lanzamientos o el número de lanzamientos que son cara o alguna otra estadística. Justifiquen su elección. Qué pueden concluir?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+  Para los dados hagan un test de permutaciones. Qué pueden concluir?
+\end{pregunta}
+
+
+\end{document}

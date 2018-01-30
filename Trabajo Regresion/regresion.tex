@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[a4paper, total={5.8in, 8in}]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{mdframed}
+
+\selectlanguage{spanish}
+\graphicspath{ {figs/} }
+
+\newmdenv[leftline=false,rightline=false]{topbot}
+\newtheorem{pregunta}{Pregunta}
+
+\font\domino=domino
+\def\die#1{{\domino#1}}
+
+\DeclareFontFamily{U}{skulls}{}
+\DeclareFontShape{U}{skulls}{m}{n}{ <-> skull }{}
+\newcommand{\skull}{\text{\usefont{U}{skulls}{m}{n}\symbol{'101}}}
+
+\begin{document}
+\begin{center}
+  \Large Regresión lineal. \\
+  % \die1 \die6 \die6 $\skull$ \die6 \die6 \die1 \\
+  \null
+  Estadística.
+\end{center}
+\vspace{1cm}
+
+\textbf{Importante:\\
+ Escriban el código R para TODAS las preguntas de programación. \\ Cada grupo debe redactar sus resultados.}
+
+\null\hfill
+
+ El objetivo del ejercicio es analizar la relación entre dos variables.
+\par
+Van a registrar y analizar datos de dos experimentos para deducir algunas relaciones importantes en física.
+ \begin{topbot}
+   \vspace{0.7em}
+   Paso 0 \quad Registrar y analizar los datos
+   \vspace{0.7em}
+ \end{topbot}
+
+\begin{pregunta} (4 puntos)
+Registren y lean los datos en R. Hagan un plot de las observaciones para cada experimento. Qué pueden concluir al leer los plots?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Las relaciones son lineales o necesitan hacer algún tipo de transformción en las variables? Hay alguna intuición física que les pueda ayudar para descubrir las tranformaciones?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 1 \quad Construir el modelo de regresión
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Cuál es un buen un modelo de regresión para cada una de las relaciones? Por qué?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Calculen los coeficientes, $a$ y $b$, del modelo usando lm de R. Interpreten los coeficientes. Qué unidades tienen? Qué significan? Pueden construir un intervalo de confianza para los coeficientes? Qué representa el intervalo?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Qué limitaciones tienen los modelos que usaron? Pueden proponer alguna alternativa? Cuándo son útiles los modelos?
+\end{pregunta}
+
+\end{document}

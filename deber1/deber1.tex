@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+
+\newtheorem{pregunta}{Pregunta}
+
+\begin{document}
+
+\title{Deber 1\\ Estadística}
+\author{Federico Zertuche}
+\date{}
+\maketitle
+\textbf{Importante: Escriban el código R para TODAS las preguntas de programación. Cuando terminen suban un pdf con las respuestas a la sección correspondiente del aula virtual.}
+\vspace{1em}
+\hline
+\vspace{1em}
+\large \textbf{Ejercicio 1 \quad Un poco de R.}
+\vspace{1em}
+\hline
+\begin{pregunta}
+Cuáles de las siguientes expresiones valen 99 para x = 10 en R? Analicen la sintaxis como si estuvieran programando.
+\begin{itemize}
+\item 10x - 1
+\item (x)(x) - 1
+\item abs(x*x) - abs(9-x)
+\item 11 * x - x + 1
+\end{itemize}
+\end{pregunta}
+\begin{pregunta}
+Un vector contiene una serie de ganancias ordenadas de manera creciente. Escriban el código que genera:
+\begin{itemize}
+\item La suma de todas las ganancias.
+\item La segunda ganancia mas grande.
+\item La diferencia mas grande entre las ganancias.
+\item Un booleano que responda a la pregunta: La mas grande diferencia ente dos ganancias es mayor a 10?
+\item La menor diferencia positiva entre dos ganancias.
+\item El máximo número de ganancias que pueden sumar sin pasar de 10000.
+\end{itemize}
+\end{pregunta}
+\hline
+\vspace{1em}
+\textbf{Ejercicio 2 \quad Dplyr en los Aeorpuertos.}
+\vspace{1em}
+\hline
+\vspace{1em}
+Vamos a estudiar los datos de los vuelos locales en Estados Unidos durante el 2011. Usen los verbos:
+\begin{itemize}
+  \item select()
+  \item filter()
+  \item mutate()
+  \item arrange()
+  \item group\_by()
+  \item summarise()
+\end{itemize}
+para manipular 3 data frames: Uno con los vuelos (flights), uno con los aviones (planes) y otro con el clima (weather). La descripción de todos los data frames está en la documentación del paquete nycflights13 (https://cran.r-project.org/web/packages/nycflights13/nycflights13.pdf).
+\begin{pregunta}
+Instalen la librería nycflights13.
+Escriban el código para encontrar todos los vuelos que:
+\begin{itemize}
+\item Fueron de JKF(John F. Kennedy) hasta OAK(Oakland).
+\item Salieron en Enero.
+\item Tienen demoras de mas de una hora (las demoras están en minutos).
+\item Salieron entre medianoche y las 5 a.m.
+\item Tuvieron una demora de llegada 2 veces mas grande que la de salida.
+\end{itemize}
+\end{pregunta}
+\begin{pregunta}
+Lean la ayuda de select(). Escriban 2 formas de selecionar las dos variables de retraso.
+\end{pregunta}
+\begin{pregunta}
+Ordenen la tabla por fecha de salida y tiempo. Cu\'ales fueron los vuelos que sufrieron las mayores demoras? Cuáles recuperaron la mayor cantidad de tiempo durante el vuelo?
+\end{pregunta}
+\begin{pregunta}
+Calculen la velocidad en mph usando el tiempo (que est\'a en minutos) y la distancia (que est\'a en millas). Cu\'al fué el avión que voló mas rápido?
+\end{pregunta}
+\begin{pregunta}
+En dplyr el comando pipeline \%>\% se lee entonces. Significa:
+\begin{equation*}
+x \ \%>\% \ f(y) \longrightarrow f(x, y).
+\end{equation*}
+Es decir pasa x como primer argumento de f.
+\par
+Qué significan las siguientes líneas de código:
+\begin{align*}
+  flights\ \%>\% \ & filter(! \ is.na(dep\_delay))  \%>\%\ \\
+          & group\_by(date, \ hour) \%>\%\ \\
+          & summarise(delay = mean(dep\_delay), \ n = n()) \%>\%\ \\
+          & filter(n > 10)
+\end{align*}
+\end{pregunta}
+\begin{pregunta}
+Cuál es la destinación que tiene las demoras promedio mas grandes? Cuántos vuelos diarios hay? Cuál es la mejor hora para viajar sin retraso?
+\end{pregunta}
+\hline
+\vspace{1em}
+\textbf{Ejercicio 3 \quad 6,000 Años de Urbanización Global.}
+\vspace{1em}
+\hline
+\vspace{1em}
+En el artículo \href{http://www.nature.com/articles/sdata201634}{Spatializing 6,000 years of global urbanization from 3700 BC to AD 2000} los autores reunen una serie de datos sobre la población de las ciudades del mundo desde 3700 A.C. hasta el 2000 D.C. Usemos estos datos para tratar de entender algunas cosas sobre la distribución espacial de las personas a través del tiempo.
+\par
+Para hacer esto vamos a tener que manipular dos data frames - uno para la población y otro con los nombres de los países y continentes - usando dplyr para eventualmente unirlos.
+\par
+En este ejercicio vamos a usar algunos verbos para unir data frames.
+\begin{itemize}
+  \item inner\_join(d1, \ d2) \ contiene solo las filas  de d1 comunes a d2.
+  \item left\_join(d1, \ d2) \ contiene todas las filas de d1 y NA en las filas de d2 que no están en d1.
+  \item semi\_join(d1, \ d2) \ no añade columnas a d1. Contiene las filas de d1 comunes a d2.
+\end{itemize}
+\begin{pregunta}
+Cuántas personas han habitado Sur América? Hay alguna forma de usar los datos para saber cuál es la región que tiene las poblaciones mas antiguas? Pueden usar los datos para trata r de entender si hay un patrón migratorio a lo largo de la historia?
+\end{pregunta}
+\end{document}
