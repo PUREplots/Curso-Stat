@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1527103969 "regresion.tex" "regresion.pdf" "regresion" 1527103971
+["pdflatex"] 1527168829 "mcmc.tex" "mcmc.pdf" "mcmc" 1527168830
   "c:/texlive/2017/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1506775063 2971 def0b6c1f0b107b3b936def894055589 ""
   "c:/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1506776754 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "c:/texlive/2017/texmf-dist/fonts/tfm/jknappen/ec/ecbx0500.tfm" 1506776096 3584 0913860e6fa2bdf78ecaf460b391112b ""
@@ -93,11 +93,11 @@
   "c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1506784616 2437530 13029676e82936e3486a788987a8ae66 ""
   "c:/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1506784717 4126646 267c69a5b2080ce3205503f26d311eae ""
   "c:/texlive/2017/texmf.cnf" 1506784570 673 4ae7b2f49cee444c5343a45b5d0f169c ""
-  "regresion.aux" 1527103970 1233 b675235819853c119406d1f8295b532a ""
-  "regresion.out" 1527103970 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "regresion.tex" 1527103968 5429 1fd86944e23d8907ebc9f734bd873c22 ""
+  "mcmc.aux" 1527168830 1233 b675235819853c119406d1f8295b532a ""
+  "mcmc.out" 1527168829 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "mcmc.tex" 1527168826 5238 7a12acb70c68fbfd166934c31d5eb257 ""
   (generated)
-  "regresion.pdf"
-  "regresion.aux"
-  "regresion.out"
-  "regresion.log"
+  "mcmc.log"
+  "mcmc.pdf"
+  "mcmc.out"
+  "mcmc.aux"
