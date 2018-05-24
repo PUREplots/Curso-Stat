@@ -1,0 +1,144 @@
+\documentclass{article}
+\usepackage[a4paper, total={5.8in, 8in}]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{mdframed}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\selectlanguage{spanish}
+\graphicspath{ {figs/} }
+
+\newmdenv[leftline=false,rightline=false]{topbot}
+\newtheorem{pregunta}{Pregunta}
+
+\font\domino=domino
+\def\die#1{{\domino#1}}
+
+\DeclareFontFamily{U}{skulls}{}
+\DeclareFontShape{U}{skulls}{m}{n}{ <-> skull }{}
+\newcommand{\skull}{\text{\usefont{U}{skulls}{m}{n}\symbol{'101}}}
+
+\begin{document}
+\begin{center}
+  \Large Descifrando C\'odigos \\
+  % \die1 \die6 \die6 $\skull$ \die6 \die6 \die1 \\
+  \null
+  Estadística.
+\end{center}
+\vspace{1cm}
+
+\textbf{Importante:\\
+ Escriban el código R para TODAS las preguntas de programación. \\ Cada grupo debe redactar sus resultados.}
+
+\null\hfill
+
+ Vamos a estudiar algunos algortimos aleatorios que sirven para descifrar mensajes secretos como:
+
+\begin{equation*}
+\Im 	\heartsuit  \infty \aleph
+\end{equation*}
+
+Voy a asumir que cada s\'imbolo corresponde a una letra. Por ejemplo, el mensaje de arriba puede significar:
+
+\begin{center}
+  hola
+\end{center}
+
+En ese caso: $\Im \longleftrightarrow h$; $\heartsuit \longleftrightarrow o$; $\infty \longleftrightarrow l$ y $\aleph \longleftrightarrow a$.
+
+El objetivo de los algoritmos que vamos a estudiar es encontrar una correspondencia entre letras y s\'imboos como la de arriba.
+
+ \begin{topbot}
+   \vspace{0.7em}
+   Paso 0 \quad Códigos, letras y frecuencias.
+   \vspace{0.7em}
+ \end{topbot}
+Supongo que no se van a sorprender si les digo que en cualquier idioma diferentes letras aparecen con difrentes frecuencias. Por ejemplo la letra mas frecuente en espa\~nol, ingl\'es y franc\'es es la e.
+
+\begin{pregunta} (4 puntos)
+C\'omo har\'ian para estimar la frecuencia de las letras de un lenguaje? No necesitan escribir un programa en R. Quisiera que describan un algoritmo en pseudo-c\'codigo.
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Escriban un algoritmo que cambie las letras de un string de manera aleatoria. Les recomiendo que primero escojan una codificaci\'on de manera aleatoria por ejemplo: $a \leftrightarrow b$, $c \leftrightarrow z$, etc. Pueden usar $sample(letters[14:26], 13)$ y poner ese vector en correspondencia con $letters[1:13]$. Luego, usen la funci\'on $change2$ de manera iterativa para cambiar las letras de un texto.
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Cu\'al es la probabilidad de una codificaci\'on en la que uso $sample(letters[14:26], 13)$ y pongo ese vector en correspondencia con $letters[1:13]$? Es la misma probabilidad que la de una correspondecia cualquiera?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 1 \quad Una Primera Idea: Identificar Letras por sus Frecuencias.
+  \vspace{0.7em}
+\end{topbot}
+
+\begin{pregunta} (4 puntos)
+Usen los datos en la tabla frecuencia letras y dibujen un gráfico de barras con las frecuencias para cada letra.
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Usen su código del paso 0 para codificar tres textos: uno corto ($\approx$ un par de palabras); uno mediano ($\approx$ un par de párrafos) y uno largo (un libro, o el capítulo de un libro o un artículo largo).
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+  OK! Hora de decifrar sus primeros mensajes. Traten la siguiente estrategia:
+  Estimen la frecuencia con la que aparecen las letras en sus textos codificados. Luego relacionen las letras por sus frecuencias. Por ejemplo, si en su texto codificado la letra que aparece de manera mas frecuente es la w, entonces supongan que $w \longleftrightarrow e$.
+
+  Su esquema funciona en los tres tipos de c\'odigos?
+\end{pregunta}
+
+\begin{topbot}
+  \vspace{0.7em}
+  Paso 2 \quad Markov Chain Monte Carlo: Usar pares de letras.
+  \vspace{0.7em}
+\end{topbot}
+
+En esta parte vamos a considerar la frecuencia con la que aparecen 2 letras consecutivas.
+
+\begin{pregunta} (4 puntos)
+  Estimen la frecuencia con la que aperecen todas las posibles combinaciones de dos letras. Cu\'antas combinaciones posibles de dos letras hay?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+  Estimen la frecuencia con la que aperecen todas las posibles combinaciones de dos letras. Cu\'antas combinaciones posibles de dos letras hay?
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+  Programen el siguiente algoritmo donde el score de una correspondecia es
+  \begin{equation}
+    q(thiqq) := P(th) \times P(hi) \times P(iq) \times P(qq)
+  \end{equation}
+
+\begin{algorithm}
+\caption{MCMC}\label{mcmc}
+\begin{algorithmic}[1]
+\Procedure{MCMC}{}
+\State Escojan una correspondencia de manera aleatoria $c$.
+\For $ ~ i = 1, ..., n$:
+\State Escojan dos letras de la correspondencia al azar.
+\State Cambien su posici\'on en la correspondencia.
+\State Calculen el score $q^*$ de la nueva correspondencia $c^*$.
+\If {$q^* > q$} conserven el cambio.
+\EndIf
+\If {$q > q^*$}
+\State Conserven el cambio con proba $q^*/q$.
+\State Rechazen con proba $(1-q^*)/q$.
+\EndIf
+\EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{pregunta}
+
+\begin{pregunta} (4 puntos)
+Funciona el algortimo \ref{mcmc}? En qu\'e se diferencia del algoritmo del paso 1?
+\end{pregunta}
+
+\end{document}
